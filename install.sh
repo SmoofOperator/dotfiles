@@ -3,7 +3,7 @@ set -e
 
 # ── Install packages ──────────────────────────────────────────────────────────
 echo "Installing packages..."
-sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf
+sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat
 
 # ── Install Starship ──────────────────────────────────────────────────────────
 echo "Installing Starship prompt..."

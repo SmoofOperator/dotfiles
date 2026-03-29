@@ -24,10 +24,11 @@ setopt SHARE_HISTORY          # share history across sessions
 # ── Colors ────────────────────────────────────────────────────────────────────
 export CLICOLOR=1
 export LS_COLORS='di=1;34:ln=36:so=32:pi=33:ex=1;32:bd=1;33:cd=1;33:su=1;31:sg=1;31:tw=1;34:ow=1;34'
-alias ls='ls --color=auto'
-alias ll='ls -lah --color=auto'
+alias ls='eza --color=auto --group-directories-first'
+alias ll='eza -lah --color=auto --group-directories-first --git'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias cat='bat --paging=never'
 
 # ── Prompt (Starship) ─────────────────────────────────────────────────────────
 eval "$(starship init zsh)"
@@ -52,3 +53,6 @@ bindkey '^ ' autosuggest-accept          # Ctrl+Space: accept suggestion
     source /usr/share/fzf/shell/key-bindings.zsh
 [ -f /usr/share/fzf/shell/completion.zsh ] && \
     source /usr/share/fzf/shell/completion.zsh
+
+# ── zoxide (smart cd) ─────────────────────────────────────────────────────────
+eval "$(zoxide init zsh)"
