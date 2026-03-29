@@ -1,6 +1,6 @@
 # dotfiles
 
-Configuration files for zsh and terminal tools.
+Configuration files for zsh and terminal tools. Works on Fedora-based and Debian-based distros.
 
 ## Restore on a fresh install
 
@@ -59,3 +59,24 @@ Neovim is a modern, fast terminal editor. LazyVim is a pre-built configuration t
 - Syntax highlighting for all major languages (Treesitter)
 - Git signs in the gutter and inline blame (gitsigns)
 - `Space+gg` — open lazygit TUI (if installed)
+
+### Multiplexer
+
+**[tmux](https://github.com/tmux/tmux)**
+Split your terminal into panes and windows, and keep sessions alive when you close the terminal. Key bindings:
+- Prefix is `Ctrl+A` (changed from default `Ctrl+B`)
+- `Ctrl+A |` — split pane vertically
+- `Ctrl+A -` — split pane horizontally
+- `Alt+Arrow` — navigate between panes
+- `Shift+Arrow` — navigate between windows
+- `Ctrl+A r` — reload tmux config
+
+### Git
+
+**[lazygit](https://github.com/jesseduffield/lazygit)**
+A terminal UI for git. Stage hunks, resolve conflicts, view diffs, and manage branches without typing git commands. Run with `lazygit` or `Space+gg` inside Neovim.
+
+### System monitoring
+
+**[btop](https://github.com/aristocratsofcode/btop)**
+A modern replacement for `top`/`htop`. Shows CPU, memory, disk, and network usage in one view. Run with `btop`.
