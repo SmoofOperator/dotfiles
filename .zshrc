@@ -56,3 +56,9 @@ bindkey '^ ' autosuggest-accept          # Ctrl+Space: accept suggestion
 
 # ── zoxide (smart cd) ─────────────────────────────────────────────────────────
 eval "$(zoxide init zsh)"
+
+# ── atuin (better history) ────────────────────────────────────────────────────
+eval "$(atuin init zsh)"
+
+# ── fastfetch (show system info on shell start) ───────────────────────────────
+fastfetch

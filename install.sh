@@ -4,11 +4,11 @@ set -e
 # ── Detect package manager ────────────────────────────────────────────────────
 if command -v dnf &>/dev/null; then
     echo "Detected Fedora-based distro (dnf)"
-    sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux lazygit btop
+    sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux lazygit btop kitty wl-clipboard atuin fastfetch
 elif command -v apt &>/dev/null; then
     echo "Detected Debian-based distro (apt)"
     sudo apt update
-    sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux btop
+    sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux btop kitty wl-clipboard atuin fastfetch
     # lazygit not in apt repos, install manually
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name"' | sed 's/.*"v\([^"]*\)".*/\1/')
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -23,6 +23,14 @@ fi
 # ── Install Starship ──────────────────────────────────────────────────────────
 echo "Installing Starship prompt..."
 curl -sS https://starship.rs/install.sh | sh
+
+# ── Install JetBrainsMono Nerd Font ───────────────────────────────────────────
+echo "Installing JetBrainsMono Nerd Font..."
+mkdir -p ~/.local/share/fonts
+curl -Lo /tmp/JetBrainsMono.zip "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
+unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
+fc-cache -fv
+rm /tmp/JetBrainsMono.zip
 
 # ── Set zsh as default shell ──────────────────────────────────────────────────
 echo "Setting zsh as default shell..."

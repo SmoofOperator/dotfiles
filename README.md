@@ -80,3 +80,28 @@ A terminal UI for git. Stage hunks, resolve conflicts, view diffs, and manage br
 
 **[btop](https://github.com/aristocratsofcode/btop)**
 A modern replacement for `top`/`htop`. Shows CPU, memory, disk, and network usage in one view. Run with `btop`.
+
+### Terminal emulator
+
+**[kitty](https://sw.kovidgoyal.net/kitty/)**
+A GPU-accelerated terminal emulator. Configured with the Tokyo Night color theme (matching LazyVim), JetBrainsMono Nerd Font, and tab support.
+
+### Font
+
+**[JetBrainsMono Nerd Font](https://www.nerdfonts.com/)**
+A monospace font patched with thousands of icons. Required for icons to render correctly in eza, Neovim, Starship, and kitty.
+
+### Clipboard
+
+**[wl-clipboard](https://github.com/bugaevc/wl-clipboard)**
+Wayland clipboard integration. Allows Neovim and tmux to copy/paste to and from the system clipboard.
+
+### History
+
+**[atuin](https://atuin.sh/)**
+Replaces `Ctrl+R` with a powerful history search UI. Stores metadata (exit code, directory, duration) and can sync history across machines.
+
+### System info
+
+**[fastfetch](https://github.com/fastfetch-cli/fastfetch)**
+Displays system info (OS, kernel, CPU, memory, etc.) on shell startup.
