@@ -47,3 +47,15 @@ A modern replacement for `cat`. Aliased to `cat`. Adds syntax highlighting and l
 
 **[zoxide](https://github.com/ajeetdsouza/zoxide)**
 A smarter `cd`. Learns your most frequently visited directories and lets you jump to them with `z <partial-name>` from anywhere.
+
+### Editor
+
+**[Neovim](https://neovim.io/) + [LazyVim](https://www.lazyvim.org/)**
+Neovim is a modern, fast terminal editor. LazyVim is a pre-built configuration that turns it into a full IDE. Includes:
+- `Space+e` — file tree (neo-tree)
+- `Space+ff` — fuzzy file search (Telescope)
+- `Space+fg` — fuzzy text search across project
+- LSP: autocompletion, go-to-definition, inline errors
+- Syntax highlighting for all major languages (Treesitter)
+- Git signs in the gutter and inline blame (gitsigns)
+- `Space+gg` — open lazygit TUI (if installed)
