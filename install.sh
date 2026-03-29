@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 set -e
 
-# ── Detect package manager ────────────────────────────────────────────────────
-if command -v dnf &>/dev/null; then
+# ── Detect OS and package manager ─────────────────────────────────────────────
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Detected macOS"
+
+    # Install Homebrew if not present
+    if ! command -v brew &>/dev/null; then
+        echo "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    brew install zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux lazygit btop atuin fastfetch
+    brew install --cask ghostty font-jetbrains-mono-nerd-font
+
+    # macOS clipboard works natively, no wl-clipboard needed
+
+elif command -v dnf &>/dev/null; then
     echo "Detected Fedora-based distro (dnf)"
     sudo dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting fzf zoxide eza bat neovim tmux lazygit btop kitty wl-clipboard atuin fastfetch
+
 elif command -v apt &>/dev/null; then
     echo "Detected Debian-based distro (apt)"
     sudo apt update
@@ -15,8 +30,9 @@ elif command -v apt &>/dev/null; then
     tar xf lazygit.tar.gz lazygit
     sudo install lazygit -D -t /usr/local/bin/
     rm lazygit lazygit.tar.gz
+
 else
-    echo "Unsupported package manager. Install packages manually."
+    echo "Unsupported OS/package manager. Install packages manually."
     exit 1
 fi
 
@@ -24,17 +40,23 @@ fi
 echo "Installing Starship prompt..."
 curl -sS https://starship.rs/install.sh | sh
 
-# ── Install JetBrainsMono Nerd Font ───────────────────────────────────────────
-echo "Installing JetBrainsMono Nerd Font..."
-mkdir -p ~/.local/share/fonts
-curl -Lo /tmp/JetBrainsMono.zip "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
-unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
-fc-cache -fv
-rm /tmp/JetBrainsMono.zip
+# ── Install JetBrainsMono Nerd Font (Linux only, Mac uses cask above) ─────────
+if [[ "$OSTYPE" != "darwin"* ]]; then
+    echo "Installing JetBrainsMono Nerd Font..."
+    mkdir -p ~/.local/share/fonts
+    curl -Lo /tmp/JetBrainsMono.zip "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
+    unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
+    fc-cache -fv
+    rm /tmp/JetBrainsMono.zip
+fi
 
 # ── Set zsh as default shell ──────────────────────────────────────────────────
 echo "Setting zsh as default shell..."
-chsh -s /usr/bin/zsh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    chsh -s /bin/zsh
+else
+    chsh -s /usr/bin/zsh
+fi
 
 # ── Restore dotfiles ──────────────────────────────────────────────────────────
 echo "Restoring dotfiles..."

@@ -1,6 +1,6 @@
 # dotfiles
 
-Configuration files for zsh and terminal tools. Works on Fedora-based and Debian-based distros.
+Configuration files for zsh and terminal tools. Works on macOS, Fedora-based, and Debian-based distros.
 
 ## Restore on a fresh install
 
@@ -83,8 +83,11 @@ A modern replacement for `top`/`htop`. Shows CPU, memory, disk, and network usag
 
 ### Terminal emulator
 
-**[kitty](https://sw.kovidgoyal.net/kitty/)**
+**[kitty](https://sw.kovidgoyal.net/kitty/)** (Linux)
 A GPU-accelerated terminal emulator. Configured with the Tokyo Night color theme (matching LazyVim), JetBrainsMono Nerd Font, and tab support.
+
+**[Ghostty](https://ghostty.org/)** (macOS)
+A GPU-accelerated terminal emulator with a native macOS feel. Installed automatically on Mac via Homebrew.
 
 ### Font
 
