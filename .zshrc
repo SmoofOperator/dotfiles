@@ -29,13 +29,8 @@ alias ll='ls -lah --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 
-# ── Prompt ────────────────────────────────────────────────────────────────────
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{magenta}(%b)%f'
-
-setopt PROMPT_SUBST
-PROMPT='%F{cyan}%n%f%F{white}@%f%F{green}%m%f %F{blue}%~%f${vcs_info_msg_0_} %F{yellow}❯%f '
+# ── Prompt (Starship) ─────────────────────────────────────────────────────────
+eval "$(starship init zsh)"
 
 # ── Plugins ───────────────────────────────────────────────────────────────────
 # zsh-autosuggestions (ghost text as you type)
@@ -51,3 +46,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 bindkey '^[[A' history-search-backward   # Up arrow: history search
 bindkey '^[[B' history-search-forward    # Down arrow: history search
 bindkey '^ ' autosuggest-accept          # Ctrl+Space: accept suggestion
+
+# ── fzf ───────────────────────────────────────────────────────────────────────
+[ -f /usr/share/fzf/shell/key-bindings.zsh ] && \
+    source /usr/share/fzf/shell/key-bindings.zsh
+[ -f /usr/share/fzf/shell/completion.zsh ] && \
+    source /usr/share/fzf/shell/completion.zsh
